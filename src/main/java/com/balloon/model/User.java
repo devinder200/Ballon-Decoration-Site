@@ -1,8 +1,12 @@
 package com.balloon.model;
 
+import com.balloon.Enums.Status;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -39,8 +43,9 @@ public class User {
 	@Column(name="pincode")
 	private int pincode;
 	
-	@Column(name="active")
-	private boolean active;
+	@Enumerated(EnumType.STRING)
+	@Column(name="status")
+	private Status status;
 
 	public User() {
 		super();
@@ -110,20 +115,22 @@ public class User {
 		this.pincode = pincode;
 	}
 
-	public boolean isActive() {
-		return active;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", name=" + name + ", mobile=" + mobile + ", email="
-				+ email + ", address=" + address + ", city=" + city + ", pincode=" + pincode + ", active=" + active
+				+ email + ", address=" + address + ", city=" + city + ", pincode=" + pincode + ", status=" + status
 				+ "]";
 	}
+
+	
 	
 	
 	
